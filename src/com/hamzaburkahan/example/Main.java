@@ -1,22 +1,32 @@
-package com.hamzaburkahan;
+package com.hamzaburkahan.example;
 
 import java.sql.SQLException;
 import java.util.List;
 
+import com.hamzaburakhan.bookstore.Book;
 import com.hamzaburakhan.jdbc.DatabaseConnection;
 import com.hamzaburakhan.jdbc.QueryParams;
 
 public class Main {
 	public static final String HOST = "localhost";
-	public static final String DB = "exampleDb";
+	public static final String DB = "bookstore";
 	public static final String USERNAME = "user";
 	public static final String PASSWORD = "pass";
 	public static final boolean ENCODE_UTF8 = true;
 	
 	public static void main(String[] args) throws Exception {
 		
+		
+		DatabaseConnection dbconnection = new DatabaseConnection(HOST, DB, USERNAME, PASSWORD, ENCODE_UTF8);
+		String selectSQL = "Select * FROM books,persons Where books.verilen =persons.id ";
+		//Parametre yoksa null girilir.
+		List<Book> users = dbconnection.selectRecods(selectSQL,null,Book.class);
+	
+	
 	}
+	
 
+	
 	
 	public static void updateExample() throws SQLException {
 		DatabaseConnection dbconnection = new DatabaseConnection(HOST, DB, USERNAME, PASSWORD, ENCODE_UTF8);
