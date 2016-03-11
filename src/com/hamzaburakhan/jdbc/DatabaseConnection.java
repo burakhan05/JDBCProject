@@ -1,4 +1,5 @@
 package com.hamzaburakhan.jdbc;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -150,7 +151,8 @@ public class DatabaseConnection {
 		return result;
 	}
 
-	public <T> List<T> selectRecods(String selectSQL, QueryParams parameters, Class<T> dataObjectType) throws SQLException {
+	public <T> List<T> selectRecods(String selectSQL, QueryParams parameters, Class<T> dataObjectType)
+			throws SQLException {
 		List<T> list = null;
 		Connection dbConnection = null;
 		PreparedStatement preparedStatement = null;
@@ -162,7 +164,8 @@ public class DatabaseConnection {
 		try {
 			dbConnection = getConnection();
 			preparedStatement = dbConnection.prepareStatement(selectSQL);
-			PsSetter.setValues(preparedStatement, parameters);
+			if (parameters != null)
+				PsSetter.setValues(preparedStatement, parameters);
 			rs = preparedStatement.executeQuery();
 			list = new ArrayList<>();
 			while (rs.next()) {

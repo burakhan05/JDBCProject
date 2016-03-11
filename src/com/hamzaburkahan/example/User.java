@@ -1,4 +1,4 @@
-package com.hamzaburkahan;
+package com.hamzaburkahan.example;
 
 import com.hamzaburakhan.jdbc.RealName;
 import com.hamzaburakhan.jdbc.Table;
