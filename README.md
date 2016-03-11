@@ -19,6 +19,27 @@ public class User {
 
 	@RealName("lastName")
 	private String soyad;
+
+	@Embeded
+	private Adress adres;
+	
+	getter and setters...
+
+```
+###Adress Class
+
+```Java
+@Table("addresses")
+public class User {
+	
+	@RealName("id")
+	private int id;
+
+	@RealName("il")
+	private String il;
+	
+	@RealName("ilce")
+	private String ilce;
 	
 	getter and setters...
 
@@ -34,18 +55,13 @@ dbconnection.insertRow(user);
 ###Select example
 ```Java
 DatabaseConnection dbconnection = new DatabaseConnection(HOST, DB, USERNAME, PASSWORD, true);
-String selectSQL = "Select * FROM tabloadi Where id < ? ";
+String selectSQL = "Select * FROM tabloadi,addresses Where id < ? AND tabloadi.adres_id=addresses.id ";
 //Sorgundaki soru işaretleri için parametreleri giriyorsun.Sırasıyla girmen önemli.
 //You must enter the parameters for the question marks in your query. It is important to be sequential.
 QueryParams paramaters = new QueryParams();
 paramaters.addParams(8);
 List<User> users = dbconnection.selectRecods(selectSQL, paramaters,User.class);
-	  for (User user : users) {
-			System.out.print("id: "+user.getId());
-			System.out.print("\tname: "+user.getAd());
-			System.out.println(" \tlastName: "+user.getSoyad());
 
-		}
 ```
 ###Update example
 ```Java
