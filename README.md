@@ -38,8 +38,8 @@ public class User {
 	@RealName("il")
 	private String il;
 	
-	@RealName("ilçe")
-	private String il;
+	@RealName("ilce")
+	private String ilce;
 	
 	getter and setters...
 
