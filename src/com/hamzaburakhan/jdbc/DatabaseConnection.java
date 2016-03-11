@@ -167,7 +167,7 @@ public class DatabaseConnection {
 			if (parameters != null)
 				PsSetter.setValues(preparedStatement, parameters);
 			rs = preparedStatement.executeQuery();
-			list = new ArrayList<>();
+			list = new ArrayList<T>();
 			while (rs.next()) {
 				@SuppressWarnings("unchecked")
 				T obj = (T) RsGetter.getObject(rs, dataObjectType);

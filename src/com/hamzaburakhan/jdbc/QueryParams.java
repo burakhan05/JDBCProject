@@ -8,7 +8,7 @@ public class QueryParams {
 
 	public QueryParams() {
 		// TODO Auto-generated constructor stub
-	params = new ArrayList<>();
+	params = new ArrayList<Object>();
 	}
 	
 	public List<Object> getParams() {
